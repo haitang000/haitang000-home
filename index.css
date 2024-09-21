@@ -1,0 +1,153 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f5f5f5;
+    /*background-image: url(https://nav.haitang000.top/static/background/login-background.png);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+h1 {
+    color: #212121;
+    transition: 0.5s;
+}
+
+p {
+    color: #3d3d3d;
+    line-break: 0.9;
+    transition: 0.5s;
+}
+
+#home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 4px;
+    gap: 100px;
+}
+
+#home img {
+    border-radius: 99999px;
+    width: 11rem;
+}
+
+.navbar {
+    background-color: #00000010;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border-radius: 999px;
+    padding: 4px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 16px;
+    z-index: 999;
+    transition: 0.3s;
+}
+
+.navbar img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    margin-right: 4px;
+}
+.navbar a {
+    display: block;
+    color: rgb(160, 160, 160);
+    text-align: center;
+    padding: 8px 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 999px;
+}
+.navbar a:hover {
+    background-color: #00000010;
+    color: black;
+    padding: 8px 32px;
+}
+
+.navbar a:active {
+    background-color: #00000030;
+    color: black;
+    scale: 0.95;
+}
+
+/*.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar img {
+    height: 50px;
+    margin-right: 20px;
+}
+.navbar a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}*/
+
+#cursor {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    background: #000000;
+    border-radius: 25px;
+    opacity: 0.25;
+    z-index: 10086;
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
+    transition-property: background, opacity, transform;
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    &.active {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #212121;
+        color: #fff;
+    }
+    h1 {
+        color: #fff;
+    }
+    p {
+        color: #696969;
+    }
+    .navbar {
+        background-color: #ffffff10;
+    }
+    .navbar a {
+        color: #fff;
+    }
+    .navbar a:hover {
+        background-color: #ffffff10;
+        color: white;
+    }
+    .navbar a:active {
+        background-color: #ffffff30;
+        color: white;
+    }
+    #cursor {
+        background: white;
+    }
+}
