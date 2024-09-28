@@ -17,13 +17,18 @@ nav {
 
 h1 {
     color: #212121;
+    opacity: 1;
     transition: 0.5s;
+    animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
 p {
     color: #3d3d3d;
+    opacity: 1;
     line-break: 0.9;
     transition: 0.5s;
+    animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
+    animation-delay: 0.5s;
 }
 
 img {
@@ -44,6 +49,11 @@ img {
     border-radius: 99999px;
     width: 11rem;
     height: 11rem;
+    transition: 1s cubic-bezier(0.68, -0.21, 0.265, 1.10);;
+}
+
+#home img:hover {
+    rotate: 360deg;
 }
 
 .navbar {
@@ -59,7 +69,7 @@ img {
     position: fixed;
     top: 16px;
     z-index: 999;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
 .navbar img {
@@ -75,7 +85,7 @@ img {
     text-align: center;
     padding: 8px 10px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
     border-radius: 999px;
 }
 .navbar a:hover {
@@ -128,6 +138,21 @@ img {
 
 .card-content {
     width: 250px;
+}
+
+@keyframes FadeInUp {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(20px);
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0px);
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    }
 }
 
 #cursor {
@@ -188,5 +213,19 @@ img {
     }
     img {
         background-color: #2b2b2b;
+    }
+    @keyframes FadeInUp {
+        0% {
+            opacity: 0;
+            scale: 0.9;
+            transform: translateY(20px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        100% {
+            opacity: 1;
+            scale: 1;
+            transform: translateY(0px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0);
+        }
     }
 }
