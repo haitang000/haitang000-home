@@ -262,3 +262,28 @@ img {
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    #home {
+        background-image: url(https://act-upload.mihoyo.com/upload/wd-wiki/2023/05/16/127729/118d75c2d48086a56206d2da307b6ac1_4673954071535591973.png), linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));;
+        gap: 16px;
+    }
+    #home h1 {
+        font-size: 2.5rem;
+    }
+    #home p {
+        font-size: 1rem;
+    }
+    .navbar {
+        display: none;
+    }
+    .content {
+        padding: 16px;
+    }
+    .content p {
+        font-size: 1rem;
+    }
+    .author {
+        padding: 16px;
+    }
+  }
