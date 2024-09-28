@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    transition: 0.5s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
 body {
@@ -19,10 +20,28 @@ h1 {
     color: #212121;
     opacity: 1;
     transition: 0.5s;
+}
+
+#home h1 {
+    color: #212121;
+    opacity: 1;
+    transition: 0.5s;
+    animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
+}
+
+h3 {
+    transition: 0.5s;
     animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
 p {
+    color: #3d3d3d;
+    opacity: 1;
+    line-break: 0.9;
+    transition: 0.5s;
+}
+
+#home p {
     color: #3d3d3d;
     opacity: 1;
     line-break: 0.9;
@@ -41,8 +60,11 @@ img {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 4px;
     gap: 100px;
+    background-image: url(https://webstatic.mihoyo.com/upload/wd-wiki/2022/11/27/82783856/8f47708b9401b87070cd72747bfb9595_3783066140524447075.png), linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
 }
 
 #home img {
@@ -128,6 +150,11 @@ img {
     height: 150px;
     border-radius: 8px;
     background-color: #ebebeb;
+    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+}
+
+.card img:hover {
+    scale: 1.1;
 }
 
 .author {
@@ -186,6 +213,12 @@ img {
         color: #fff;
     }
     p {
+        color: #696969;
+    }
+    #home h1 {
+        color: #fff;
+    }
+    #home p {
         color: #696969;
     }
     .navbar {
