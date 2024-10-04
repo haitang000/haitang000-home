@@ -23,7 +23,7 @@ h1 {
 }
 
 #home h1 {
-    color: #212121;
+    color: #ffffff;
     opacity: 1;
     transition: 0.5s;
     animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
@@ -35,14 +35,14 @@ h3 {
 }
 
 p {
-    color: #3d3d3d;
+    color: #999999;
     opacity: 1;
     line-break: 0.9;
     transition: 0.5s;
 }
 
 #home p {
-    color: #3d3d3d;
+    color: #dddddd;
     opacity: 1;
     line-break: 0.9;
     transition: 0.5s;
