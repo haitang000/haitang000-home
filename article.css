@@ -42,6 +42,11 @@ p {
     border-radius: 10px;
 }
 
+.qq-music {
+    background-color: rgb(77, 255, 196);
+    border-radius: 10px;
+}
+
 .tips {
     opacity: 0.6;
 }
