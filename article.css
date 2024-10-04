@@ -37,6 +37,11 @@ p {
     transition: 0.5s;
 }
 
+.wyy-music {
+    background-color: rgb(255, 77, 77);
+    border-radius: 10px;
+}
+
 .tips {
     opacity: 0.6;
 }
