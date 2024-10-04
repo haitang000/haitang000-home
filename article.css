@@ -1,9 +1,20 @@
+:root {
+    font-size: 15px;
+    --lighting-size: 300px;
+    --lighting-color: #9333ea;
+    --lighting-highlight-color: #d8b4fe;
+  }
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #f5f5f5;
     /*background-image: url(https://nav.haitang000.top/static/background/login-background.png);*/
     transition: 0.5s;
     padding: 10%;
+    justify-items: center;
+
+    --x: 0px;
+    --y: 0px;
 }
 
 nav {
@@ -18,9 +29,51 @@ h1 {
 }
 
 p {
+    display: inline-block;
     color: #3d3d3d;
+    position: relative;
+    width: max-content;
     line-break: 0.9;
     transition: 0.5s;
+}
+
+.tips {
+    opacity: 0.6;
+}
+
+.code-block {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 8px;
+    color: #ffffff;
+}
+
+.content a {
+    text-decoration: none;
+    color: #9333ea;
+    display: inline-block;
+    
+    background-image: radial-gradient(var(--lighting-highlight-color), var(--lighting-color), var(--lighting-color));
+    background-size: var(--lighting-size) var(--lighting-size);
+    background-repeat: no-repeat;
+    
+    background-position-x: calc(var(--x) - var(--positionX) - calc(var(--lighting-size) / 2));
+    background-position-y: calc(var(--y) - var(--positionY) - calc(var(--lighting-size) / 2));
+    
+    background-color: var(--lighting-color);
+    
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+}
+
+.all-in-one {
+    display: flexbox;
+}
+
+.main {
+    width: 60%;
 }
 
 .navbar {
@@ -85,10 +138,6 @@ p {
 
 .content p {
     line-height: 1.6;
-}
-
-.card-content {
-    width: 250px;
 }
 
 #cursor {

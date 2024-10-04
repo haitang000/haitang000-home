@@ -71,6 +71,8 @@ img {
     border-radius: 99999px;
     width: 11rem;
     height: 11rem;
+    animation-delay: 1s;
+    animation: FadeInUpImage 0.5s cubic-bezier(0.68, -1, 0.265, 1.55);
     transition: 1s cubic-bezier(0.68, -0.21, 0.265, 1.10);;
 }
 
@@ -182,6 +184,22 @@ img {
     }
 }
 
+@keyframes FadeInUpImage {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(20px);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0px);
+        filter: blur(0px);
+    }
+}
+
+
 #cursor {
     position: fixed;
     width: 18px;
@@ -214,6 +232,18 @@ img {
     }
     p {
         color: #696969;
+    }
+    #home {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 100px;
+        background-image: url(https://webstatic.mihoyo.com/upload/wd-wiki/2022/11/27/82783856/8f47708b9401b87070cd72747bfb9595_3783066140524447075.png), linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: multiply;
     }
     #home h1 {
         color: #fff;
@@ -303,15 +333,29 @@ img {
         gap: 16px;
         padding: 16px;
         border-radius: 16px;
-        background-color: #ffffff10;
+        background-color: #00000010;
         transition: 0.2s cubic-bezier(0.68, -0.21, 0.265, 1.21);
         transition-property: background, opacity, transform, scale;
+    }
+    .card:hover {
+        background-color: #00000005;
+    }
+    .card:active {
+        scale: 0.9;
+        background-color: #00000020;
+    }
+    @media (prefers-color-scheme: dark) {
+    #home {
+        background-image: url(https://act-upload.mihoyo.com/upload/wd-wiki/2023/05/16/127729/118d75c2d48086a56206d2da307b6ac1_4673954071535591973.png), linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));;
+    }
+    .card {
+        background-color: #ffffff10;
     }
     .card:hover {
         background-color: #ffffff05;
     }
     .card:active {
-        scale: 0.9;
         background-color: #ffffff20;
+    }
     }
 }
