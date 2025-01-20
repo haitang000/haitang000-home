@@ -22,6 +22,7 @@ h1 {
     color: #212121;
     opacity: 1;
     transition: 0.5s;
+    animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
 #home h1 {
@@ -91,6 +92,7 @@ img {
     position: fixed;
     top: 16px;
     z-index: 999;
+    animation: FadeInDownNav 1s cubic-bezier(0.68, -1, 0.265, 1.55);
     transition: 0.3s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
 
@@ -156,11 +158,17 @@ img {
 }
 
 @keyframes FadeInUp {
-    to {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(20px);
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1);
+    }
+    100% {
         opacity: 1;
         scale: 1;
         transform: translateY(0px);
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0);
     }
 }
 
@@ -170,6 +178,21 @@ img {
         scale: 0.9;
         transform: translateY(20px);
         filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0px);
+        filter: blur(0px);
+    }
+}
+
+@keyframes FadeInDownNav {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(-100px);
+        filter: blur(25px);
     }
     100% {
         opacity: 1;
