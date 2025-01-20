@@ -24,7 +24,6 @@ h1 {
 
 #home h1 {
     color: #ffffff;
-    opacity: 1;
     transition: 0.5s;
     animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
 }
@@ -36,7 +35,6 @@ h3 {
 
 p {
     color: #999999;
-    opacity: 1;
     line-break: 0.9;
     transition: 0.5s;
 }
@@ -44,10 +42,8 @@ p {
 #home p {
     color: #dddddd;
     opacity: 1;
-    line-break: 0.9;
     transition: 0.5s;
     animation: FadeInUp 1s cubic-bezier(0.68, -1, 0.265, 1.55);
-    animation-delay: 0.5s;
 }
 
 img {
@@ -124,59 +120,41 @@ img {
     scale: 0.95;
 }
 
-#blog {
+.func {
     display: flex;
-    padding: 4px;
-    gap: 16px;
-    padding: 10%;
-}
-
-.cards {
-    display: flexbox;
-}
-
-.card {
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    padding: 32px;
 }
 
-.card p {
-    text-align: center;
-    margin-top: 8px;
-}
-
-.card img {
-    width: 250px;
-    height: 150px;
-    border-radius: 8px;
-    background-color: #ebebeb;
-    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
-}
-
-.card img:hover {
-    scale: 1.1;
-}
-
-.author {
+.func-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    width: max-content;
+    background-color: #b41434;
+    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+    padding: 4px 8px;
+    gap: 4px;
+    border-radius: 8px;
 }
 
-.card-content {
-    width: 250px;
+.func-item:hover {
+    background-color: #de0f38;
+}
+
+.func-item:active {
+    background-color: #a20c2f;
+    scale: 0.9;
+}
+
+.func-item p {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 0;
 }
 
 @keyframes FadeInUp {
-    0% {
-        opacity: 0;
-        scale: 0.9;
-        transform: translateY(20px);
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-    100% {
+    to {
         opacity: 1;
         scale: 1;
         transform: translateY(0px);
@@ -224,7 +202,7 @@ img {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #212121;
+        background-color: #1D1D1E;
         color: #fff;
     }
     h1 {
