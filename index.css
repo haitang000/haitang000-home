@@ -157,6 +157,357 @@ img {
     line-height: 0;
 }
 
+/* 新增样式 */
+.about-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+  
+  .about-card {
+    flex: 1;
+    background: #2b2b2b;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .about-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #b41434, #de0f38);
+  }
+  
+  .about-gallery {
+    flex: 0.8;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+  }
+  
+  .gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.8s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: galleryAppear 0.8s var(--delay) forwards;
+  }
+  
+  @keyframes galleryAppear {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: 0.4s;
+  }
+  
+  .gallery-item:hover img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+  
+  .hover-info {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(180, 20, 52, 0.9), transparent);
+    color: white;
+    transition: 0.4s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+  }
+  
+  .gallery-item:hover .hover-info {
+    bottom: 0;
+  }
+  
+  .signature {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+    text-align: center;
+  }
+  
+  .signature img {
+    width: 120px;
+    opacity: 0.8;
+    margin: 1rem 0;
+  }
+
+  .modern-list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: 0.4s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+}
+
+.list-item:hover {
+  background: rgba(255,255,255,0.1);
+  border-left-color: #b41434;
+  transform: translateX(8px);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(180, 20, 52, 0.1);
+  border-radius: 50%;
+  color: #b41434;
+  font-size: 1.2rem;
+}
+
+.content h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.content p {
+  color: #a3a3a3;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+  .list-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .content h4 {
+    font-size: 1rem;
+  }
+  
+  .content p {
+    font-size: 0.9rem;
+  }
+}
+  
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+    }
+    
+    .about-gallery {
+      grid-template-columns: 1fr;
+    }
+    
+    .gallery-item img {
+      height: 200px;
+    }
+  }
+
+/* 移动端适配 */
+@media only screen and (max-width: 600px) {
+    .about-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-content ul li {
+        font-size: 0.9rem;
+    }
+}
+
+/* 现代列表样式 */
+.modern-list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: 0.4s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+}
+
+.list-item:hover {
+  background: rgba(255,255,255,0.1);
+  border-left-color: #b41434;
+  transform: translateX(8px);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(180, 20, 52, 0.1);
+  border-radius: 50%;
+  color: #b41434;
+  font-size: 1.2rem;
+}
+
+.content h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.content p {
+  color: #a3a3a3;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+  .list-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .content h4 {
+    font-size: 1rem;
+  }
+  
+  .content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* 新增内容 */
+.about-card {
+    background-color: #2b2b2b; /* 深色背景 */
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* 更深的阴影 */
+    max-width: 600px;
+    margin: 2rem auto;
+    backdrop-filter: blur(10px); /* 玻璃拟态效果 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 微妙的边框 */
+    animation: FadeInUp 0.8s cubic-bezier(0.68, -1, 0.265, 1.55);
+}
+
+.about-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.about-content p {
+    color: #a3a3a3;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-content ul li {
+    color: #d1d1d1;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+}
+
+.about-content ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+}
+
+.about-content ul strong {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.8rem;
+    transition: 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.social-links a:hover {
+    color: #b41434; /* 与点赞按钮同色系 */
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* 移动端适配 */
+@media only screen and (max-width: 600px) {
+    .about-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-content ul li {
+        font-size: 0.9rem;
+    }
+}
+
+/* 深色模式适配（保持与现有模式一致） */
+@media (prefers-color-scheme: dark) {
+    .about-card {
+        background-color: #1d1d1e;
+    }
+    
+    .about-content ul li {
+        background: rgba(255, 255, 255, 0.03);
+    }
+}
+
+
 @keyframes FadeInUp {
     0% {
         opacity: 0;
