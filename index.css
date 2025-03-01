@@ -298,6 +298,180 @@ img {
   font-size: 0.95rem;
 }
 
+/* 在index.css中添加以下样式 */
+#blog {
+    background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+    padding: 4rem 1rem;
+  }
+  
+  .blog-container {
+    column-count: 2;
+    column-gap: 2rem;
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+  
+  .blog-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    break-inside: avoid;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, 
+      rgba(180,20,52,0.15) 0%,
+      rgba(180,20,52,0) 50%);
+    z-index: -1;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  }
+  
+  .blog-card img {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  
+  .has-image:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  .blog-content h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .blog-content h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 60%;
+    background: #b41434;
+    border-radius: 3px;
+  }
+  
+  .blog-content p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .blog-date {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .blog-date::before {
+    content: '🕒';
+    opacity: 0.6;
+  }
+  
+  /* 新增装饰元素 */
+  .decor-card {
+    background: rgba(180,20,52,0.1);
+    border-color: rgba(180,20,52,0.3);
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .decor-line {
+    width: 60%;
+    height: 2px;
+    background: var(--color);
+    margin: 1rem auto;
+    opacity: 0.3;
+  }
+  
+  .tag-list {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+  }
+  
+  .tag.ui {
+    background: rgba(180,20,52,0.3);
+    color: #ff8a8a;
+  }
+  
+  .tag.inspiration {
+    background: rgba(76,175,80,0.3);
+    color: #81c784;
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .blog-container {
+      column-count: 1;
+      padding: 0 1rem;
+    }
+    
+    .blog-card {
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-card img {
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .blog-content h3 {
+      font-size: 1.2rem;
+    }
+    
+    .blog-content p {
+      font-size: 0.9rem;
+    }
+  }
+
 /* 移动端适配 */
 @media (max-width: 600px) {
   .list-item {
