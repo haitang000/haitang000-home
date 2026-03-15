@@ -52,6 +52,7 @@
     });
 
     homeSection.addEventListener('mousemove', e => {
+        if (!document.body.classList.contains('is-loaded')) return;
         if (distanceFromLast(e.clientX, e.clientY) > threshold) {
             last.x = e.clientX;
             last.y = e.clientY;

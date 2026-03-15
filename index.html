@@ -17,6 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
 <body>
@@ -143,13 +144,21 @@
       bar.style.width = progress + '%';
     }, 100);
 
+    let loaded = false;
     const finishLoading = () => {
+      if (loaded) return;
+      loaded = true;
       clearInterval(interval);
       bar.style.width = '100%';
       setTimeout(() => {
         splash.classList.add('hidden');
         // Unlock scroll after fade out
         document.body.classList.remove('no-scroll');
+        document.body.classList.add('is-loaded');
+        
+        // Signal that entrance animations can start
+        window.dispatchEvent(new CustomEvent('loading-finished'));
+
         setTimeout(() => splash.remove(), 800);
       }, 300);
     };

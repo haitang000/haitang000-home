@@ -1,6 +1,36 @@
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Initialize Lenis
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true
+});
+
+// Sync ScrollTrigger with Lenis
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
+// Smooth scroll to anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            lenis.scrollTo(target, {
+                offset: 0,
+                lerp: 0.1
+            });
+        }
+    });
+});
+
 // Initial Hero Animations
 const initHeroAnimations = () => {
     // Animate navbar
@@ -42,8 +72,8 @@ const initScrollAnimations = () => {
     });
 };
 
-// Initialize animations on load
-document.addEventListener("DOMContentLoaded", () => {
+// Initialize animations after loading finishes
+window.addEventListener("loading-finished", () => {
     initHeroAnimations();
     initScrollAnimations();
 });

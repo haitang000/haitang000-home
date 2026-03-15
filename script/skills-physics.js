@@ -9,8 +9,8 @@
         Events, Common, Vector
     } = Matter;
 
-    // Wait for DOM
-    document.addEventListener('DOMContentLoaded', () => {
+    // Wait for loading to finish
+    window.addEventListener('loading-finished', () => {
         const canvas = document.querySelector('.geo-canvas');
         if (!canvas) return;
 

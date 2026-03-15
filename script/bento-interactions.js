@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("loading-finished", () => {
     // 1. Physics-based floating for geometric shapes
     const shapes = document.querySelectorAll('[data-geo]');
 
