@@ -28,10 +28,13 @@
         canvas.innerHTML = '';
 
         // Make the canvas a positioning context
+        const isMobile = window.innerWidth < 768;
+        const scaleFactor = isMobile ? 0.75 : 1;
+
         canvas.style.position = 'relative';
         canvas.style.overflow = 'hidden';
         canvas.style.cursor = 'grab';
-        canvas.style.minHeight = '400px';
+        canvas.style.minHeight = isMobile ? '350px' : '400px';
         canvas.style.touchAction = 'none';
 
         // Size
@@ -124,9 +127,9 @@
             el.style.transition = 'box-shadow 0.3s ease';
 
             if (skill.shape === 'roundedRect') {
-                el.style.width = skill.w + 'px';
-                el.style.height = skill.h + 'px';
-                el.style.borderRadius = '24px';
+                el.style.width = (skill.w * scaleFactor) + 'px';
+                el.style.height = (skill.h * scaleFactor) + 'px';
+                el.style.borderRadius = (24 * scaleFactor) + 'px';
                 el.style.backgroundColor = skill.color;
                 el.style.color = skill.textColor;
                 if (skill.color === '#1a1a1a') {
@@ -138,7 +141,7 @@
                 }
             } else if (skill.shape === 'polygon') {
                 // Triangle rendered via CSS
-                const triSize = skill.radius * 2;
+                const triSize = skill.radius * 2 * scaleFactor;
                 el.style.width = triSize + 'px';
                 el.style.height = triSize + 'px';
                 el.style.backgroundColor = 'transparent';
@@ -178,8 +181,8 @@
             let body;
 
             if (skill.shape === 'roundedRect') {
-                body = Bodies.rectangle(startX, startY, skill.w, skill.h, {
-                    chamfer: { radius: 24 },
+                body = Bodies.rectangle(startX, startY, skill.w * scaleFactor, skill.h * scaleFactor, {
+                    chamfer: { radius: 24 * scaleFactor },
                     restitution: 0.4,
                     friction: 0.3,
                     frictionAir: 0.02,
@@ -187,7 +190,7 @@
                     render: { visible: false }
                 });
             } else {
-                body = Bodies.polygon(startX, startY, 3, skill.radius, {
+                body = Bodies.polygon(startX, startY, 3, skill.radius * scaleFactor, {
                     restitution: 0.4,
                     friction: 0.3,
                     frictionAir: 0.02,
@@ -238,11 +241,11 @@
 
                 let elW, elH;
                 if (skill.shape === 'roundedRect') {
-                    elW = skill.w;
-                    elH = skill.h;
+                    elW = skill.w * scaleFactor;
+                    elH = skill.h * scaleFactor;
                 } else {
-                    elW = skill.radius * 2;
-                    elH = skill.radius * 2;
+                    elW = skill.radius * 2 * scaleFactor;
+                    elH = skill.radius * 2 * scaleFactor;
                 }
 
                 const x = body.position.x - elW / 2;

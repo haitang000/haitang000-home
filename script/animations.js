@@ -21,14 +21,6 @@ const initHeroAnimations = () => {
         delay: 0.2
     });
 
-    // Animate hero subtitle
-    gsap.from(".hero-subtitle", {
-        y: 20,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.8
-    });
 };
 
 // Scroll Animations for Sections
