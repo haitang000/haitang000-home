@@ -5,26 +5,32 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="index.css" />
   <title>haitang000</title>
-  <link rel="icon" href="https://c.xiayan.icu/image/icon/logo.jpg" />
+  <link rel="icon" href="/assets/avatar/avatar.jpg" />
   <script src="https://kit.fontawesome.com/aa17b4b6b9.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=DM+Serif+Display&display=swap"
     rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
 </head>
 
 <body>
+  <!-- Minimalist Loading Screen -->
+  <div id="splash-screen">
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+  </div>
   <nav>
     <div class="navbar">
-      <img src="https://c.xiayan.icu/image/icon/logo.jpg" alt="logo" />
-      <a href="#home">首页</a>
-      <a href="#about">关于我</a>
-      <a href="#blog">生活碎片</a>
-      <a href="mailto:haitang.36038@qq.com">联系我</a>
+      <img src="/assets/avatar/avatar.jpg" alt="logo" />
+      <a href="#home"><i class="fas fa-home"></i><span class="nav-text">首页</span></a>
+      <a href="#about"><i class="fas fa-user"></i><span class="nav-text">关于我</span></a>
+      <a href="mailto:haitang.36038@qq.com"><i class="fas fa-envelope"></i><span class="nav-text">联系我</span></a>
     </div>
   </nav>
   <div id="home">
@@ -35,146 +41,122 @@
       </h1>
     </div>
   </div>
-  <section id="about" class="playful-about">
-    <div class="playful-header-wrapper">
-      <h2 class="playful-title">你好！我是 <span class="highlight-pill">haitang000</span></h2>
-    </div>
-
-    <div class="playful-bento-grid">
-      <!-- Main Bio -->
-      <div class="play-card play-surface-mixed bio-card">
-        <div class="bio-inner">
-          <div class="avatar-row">
-            <img src="https://c.xiayan.icu/image/icon/logo.jpg" alt="haitang000" class="play-avatar">
-            <div class="play-badge badge-mint">
-              <span class="pulse-ring"></span>
-              准备创造
-            </div>
-          </div>
-
-          <div class="bio-content">
-            <div class="play-role-tag">UI / UX 探索者 🎨</div>
-            <p class="play-body">专注于打造令人愉悦、以用户为中心的数字体验。我相信优秀的数字产品应该兼具美感、易用性与<span class="play-highlight-text">乐趣</span>！
-            </p>
-          </div>
-
-          <div class="play-actions">
-            <a href="https://github.com/haitang000" class="play-fab fab-coral" data-ripple>
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://twitter.com/haitangnotfun" class="play-fab fab-blue" data-ripple>
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
-        </div>
+  <section id="about" class="editorial-about">
+    <div class="editorial-grid">
+      <!-- Left Column: Text -->
+      <div class="editorial-left">
+        <h2 class="editorial-heading">关于我</h2>
+        <p class="editorial-body">
+          我是 haitang000，一名普普通通的学生，平时在业余时间做做 UI 设计，没事打打游戏。<br /><br />
+          喜欢研究界面和交互，也一直觉得好的设计其实不用很复杂，只要让人用起来舒服就够了。<br /><br />
+          目前坐标上海，持续在学校与家之间徘徊。
+        </p>
+        <a href="mailto:haitang.36038@qq.com" class="editorial-cta email-copy-btn">haitang.36038@qq.com →</a>
       </div>
 
-      <!-- Tech Stack -->
-      <div class="play-card play-surface-light stack-card">
-        <div class="play-card-header">
-          <h4>我的装备库 🎒</h4>
-        </div>
-        <div class="play-chip-group">
-          <div class="play-chip chip-figma" data-ripple><i class="fab fa-figma"></i> Figma</div>
-          <div class="play-chip chip-html" data-ripple><i class="fab fa-html5"></i> HTML</div>
-          <div class="play-chip chip-css" data-ripple><i class="fab fa-css3-alt"></i> CSS</div>
-          <div class="play-chip chip-js" data-ripple><i class="fab fa-js"></i> JS</div>
-          <div class="play-chip chip-gsap" data-ripple><i class="fas fa-magic"></i> GSAP</div>
-        </div>
-      </div>
-
-      <!-- Location -->
-      <div class="play-card location-card play-surface-mint">
-        <div class="play-map-bg"></div>
-        <div class="play-loc-badge">
-          <i class="fas fa-map-marker-alt"></i> 深圳
-        </div>
-      </div>
-
-      <!-- Role / Contact -->
-      <div class="play-card contact-card play-surface-primary email-copy-btn" data-ripple>
-        <div class="icon-blob">
-          <i class="fas fa-paper-plane contact-icon"></i>
-        </div>
-        <div class="play-contact-text">
-          <span class="play-label">联系我</span>
-          <span class="play-value">haitang.36038@qq.com</span>
-        </div>
-        <div class="play-state-layer"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 新增生活碎片板块 -->
-  <section id="blog">
-    <div class="section-title">
-      <h2>生活碎片</h2>
-      <p>记录日常的灵感与折腾</p>
-    </div>
-    <div class="blog-container">
-      <!-- 示例卡片 1 -->
-      <div class="blog-card has-image">
-        <div class="card-img-wrapper">
-          <img src="https://picsum.photos/600/400?random=1" alt="生活瞬间">
-          <div class="image-overlay"></div>
-        </div>
-        <div class="blog-content">
-          <div class="tag-list">
-            <span class="tag tech">折腾</span>
-            <span class="tag">AI</span>
-          </div>
-          <h3>成功本地运行 DeepSeek</h3>
-          <p>前几天换了台 RTX 4060 的电脑，打算尝试一下 8B 的模型。没想到不仅能跑，还非常快。也是一场酣畅淋漓的性能释放啊！</p>
-          <span class="blog-date">2025-03-01</span>
-        </div>
-      </div>
-
-      <!-- 示例卡片 2 -->
-      <div class="blog-card">
-        <div class="blog-content">
-          <div class="tag-list">
-            <span class="tag design">设计</span>
-          </div>
-          <h3>计划重构我的个人网站...</h3>
-          <p>感觉之前的网站设计不够现代，打算用更清爽的苹果风重构一下，顺便加上 GSAP 丝滑动画！</p>
-          <span class="blog-date">2025-02-27</span>
-        </div>
-      </div>
-
-      <!-- 示例卡片 3 -->
-      <div class="blog-card has-image">
-        <div class="card-img-wrapper">
-          <img src="https://picsum.photos/600/500?random=2" alt="游戏">
-          <div class="image-overlay"></div>
-        </div>
-        <div class="blog-content">
-          <div class="tag-list">
-            <span class="tag game">游戏</span>
-          </div>
-          <h3>三角洲真好玩🤓</h3>
-          <p>爱来自琳琅天上，每天下课都要和室友打两把。</p>
-          <span class="blog-date">2025-02-12</span>
+      <!-- Right Column: Geometric Skills -->
+      <div class="editorial-right">
+        <h3 class="skills-heading">技能与爱好</h3>
+        <div class="geo-canvas">
+          <!-- Physics-driven skill shapes will be injected here by skills-physics.js -->
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="footer-content">
-      <div class="func-item">
-        <i class="fas fa-heart"></i>
-        <p>点个赞</p>
+  <footer class="final-footer">
+    <div class="footer-container">
+      <div class="footer-brand-huge">
+        <div class="marquee-track">
+          <div class="marquee-part">
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+          </div>
+          <div class="marquee-part">
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+          </div>
+        </div>
       </div>
-      <p class="copyright">© 2025 haitang000. Crafted with passion.</p>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; 2025 haitang000. All Rights Reserved.</span>
+        <span>Crafted with <i class="fas fa-heart" style="color: #ff2d55; animation: heartbeat 1.5s infinite;"></i> in Shanghai</span>
+      </div>
     </div>
+
+    <!-- Back to top -->
+    <a href="#home" class="back-to-top" aria-label="回到顶部">
+      <i class="fas fa-arrow-up"></i>
+    </a>
   </footer>
 </body>
 
 </html>
 
-<script src="script/scroll.js"></script>
 <script src="script/back.js"></script>
 <script src="script/image-trail.js"></script>
 <script src="script/animations.js"></script>
 <script src="script/tilt.js"></script>
 <script src="script/bento-interactions.js"></script>
+<script src="script/skills-physics.js"></script>
+<script>
+  // Back-to-top button visibility
+  (function() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          if (window.scrollY > 400) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+  // Loading Screen Logic
+  (function() {
+    const splash = document.getElementById('splash-screen');
+    const bar = document.querySelector('.loading-bar');
+    if (!splash || !bar) return;
+
+    // Lock scroll immediately
+    document.body.classList.add('no-scroll');
+
+    // Simulate progress
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 15;
+      if (progress > 90) progress = 90;
+      bar.style.width = progress + '%';
+    }, 100);
+
+    const finishLoading = () => {
+      clearInterval(interval);
+      bar.style.width = '100%';
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        // Unlock scroll after fade out
+        document.body.classList.remove('no-scroll');
+        setTimeout(() => splash.remove(), 800);
+      }, 300);
+    };
+
+    // Global load event
+    window.addEventListener('load', finishLoading);
+
+    // Safety timeout (3 seconds)
+    setTimeout(finishLoading, 3000);
+  })();
+</script>

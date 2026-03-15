@@ -35,47 +35,18 @@ const initHeroAnimations = () => {
 const initScrollAnimations = () => {
 
 
-    // About List Items (Staggered)
-    gsap.from(".bento-item", {
+    // About Section (Editorial Grid)
+    gsap.from(".editorial-left, .editorial-right", {
         scrollTrigger: {
-            trigger: ".bento-container",
+            trigger: ".editorial-grid",
             start: "top 85%",
             toggleActions: "play none none reverse"
         },
         y: 40,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.1,
-        ease: "back.out(1.1)"
-    });
-
-    // Blog Cards (Staggered)
-    gsap.from(".blog-card", {
-        scrollTrigger: {
-            trigger: "#blog",
-            start: "top 75%",
-            toggleActions: "play none none reverse"
-        },
-        y: 80,
-        scale: 0.95,
-        opacity: 0,
-        duration: 1,
         stagger: 0.2,
-        ease: "power4.out"
-    });
-    
-    // Function section (Like button)
-    gsap.from(".func-item", {
-        scrollTrigger: {
-            trigger: "footer",
-            start: "top 95%",
-            toggleActions: "play none none reverse"
-        },
-        scale: 0.8,
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        ease: "back.out(2)"
+        ease: "power3.out"
     });
 };
 

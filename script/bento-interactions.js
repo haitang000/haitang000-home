@@ -1,53 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Material Design Ripple Effect
-    const rippleElements = document.querySelectorAll('[data-ripple]');
+    // 1. Physics-based floating for geometric shapes
+    const shapes = document.querySelectorAll('[data-geo]');
 
-    rippleElements.forEach(element => {
-        element.addEventListener('click', function (e) {
-            const rect = this.getBoundingClientRect();
-            let x, y;
+    shapes.forEach((shape, index) => {
+        // Each shape gets its own animation parameters for organic feel
+        const amplitude = 6 + Math.random() * 6;  // 6-12px float range
+        const period = 3000 + Math.random() * 2000; // 3-5s per cycle
+        const phase = Math.random() * Math.PI * 2;  // Random start phase
 
-            // Handle keyboard vs mouse click
-            if (e.clientX !== 0 && e.clientY !== 0) {
-                x = e.clientX - rect.left;
-                y = e.clientY - rect.top;
-            } else {
-                x = rect.width / 2;
-                y = rect.height / 2;
-            }
+        let startTime = null;
+        let mouseInfluenceX = 0;
+        let mouseInfluenceY = 0;
+        let currentMouseX = 0;
+        let currentMouseY = 0;
 
-            const ripple = document.createElement('span');
-            ripple.className = 'md-ripple';
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
+        function animate(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
 
-            this.appendChild(ripple);
+            // Gentle sine wave floating
+            const floatY = Math.sin((elapsed / period) * Math.PI * 2 + phase) * amplitude;
+            const floatX = Math.cos((elapsed / (period * 1.3)) * Math.PI * 2 + phase) * (amplitude * 0.4);
 
-            setTimeout(() => {
-                ripple.remove();
-            }, 600); // 600ms matches CSS animation
+            // Smooth lerp toward mouse influence
+            mouseInfluenceX += (currentMouseX - mouseInfluenceX) * 0.03;
+            mouseInfluenceY += (currentMouseY - mouseInfluenceY) * 0.03;
+
+            shape.style.transform = `translate(${floatX + mouseInfluenceX}px, ${floatY + mouseInfluenceY}px)`;
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+
+        // Subtle hover bounce
+        shape.addEventListener('mouseenter', () => {
+            currentMouseY = -12; // Gentle lift
+        });
+
+        shape.addEventListener('mouseleave', () => {
+            currentMouseX = 0;
+            currentMouseY = 0;
         });
     });
 
-    // 2. Copy Email to Clipboard Feature
+    // 2. Mouse parallax for whole geo-canvas
+    const canvas = document.querySelector('.geo-canvas');
+    if (canvas) {
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const mouseX = e.clientX - rect.left - centerX;
+            const mouseY = e.clientY - rect.top - centerY;
+
+            shapes.forEach((shape, i) => {
+                const depth = 0.02 + (i * 0.008); // Different depths for parallax
+                shape.style.setProperty('--px', `${mouseX * depth}px`);
+                shape.style.setProperty('--py', `${mouseY * depth}px`);
+            });
+        });
+    }
+
+    // 3. Copy Email to Clipboard
     const emailBtn = document.querySelector('.email-copy-btn');
     if (emailBtn) {
         emailBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const icon = emailBtn.querySelector('.contact-icon');
-            const originalIconClass = icon.className;
-            const label = emailBtn.querySelector('.play-label');
-            const originalLabelText = label.textContent;
+            const originalText = emailBtn.textContent;
 
             navigator.clipboard.writeText('haitang.36038@qq.com').then(() => {
                 emailBtn.classList.add('copied');
-                icon.className = 'fas fa-check contact-icon';
-                label.textContent = '已复制！';
+                emailBtn.textContent = '已复制！✓';
 
                 setTimeout(() => {
                     emailBtn.classList.remove('copied');
-                    icon.className = originalIconClass;
-                    label.textContent = originalLabelText;
+                    emailBtn.textContent = originalText;
                 }, 2000);
             });
         });
