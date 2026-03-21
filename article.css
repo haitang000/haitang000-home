@@ -110,10 +110,13 @@ p {
     margin-right: 4px;
 }
 .navbar a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     color: rgb(136, 136, 136);
     text-align: center;
-    padding: 8px 10px;
+    padding: 8px 14px;
     text-decoration: none;
     transition: 0.3s;
     border-radius: 999px;
