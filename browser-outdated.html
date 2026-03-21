@@ -99,6 +99,23 @@
                 transform: translateY(0) scale(1);
             }
         }
+
+        .ua-info {
+            position: fixed;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #86868b;
+            font-size: 0.8rem;
+            opacity: 0;
+            animation: smoothFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.4s;
+            padding: 0 20px;
+            word-break: break-all;
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -106,13 +123,12 @@
     <div class="error-container">
         <img src="/assets/icon/error.png" alt="Error Icon" class="error-icon">
         <h1>浏览器版本过低</h1>
-        <p>您的浏览器版本过低，导致页面无法正常显示。<br>为了获得最佳体验，请升级到以下现代浏览器：</p>
-        <div class="browser-links">
-            <a href="https://www.google.cn/chrome/" target="_blank" class="browser-btn">Google Chrome</a>
-            <a href="https://www.microsoft.com/edge" target="_blank" class="browser-btn">Microsoft Edge</a>
-            <a href="https://www.mozilla.org/firefox/" target="_blank" class="browser-btn">Firefox</a>
-        </div>
+        <p>您的浏览器版本过低，导致页面无法正常显示。<br>请升级到现代浏览器以正常访问网站</p>
     </div>
+    <div class="ua-info" id="ua-display">识别中...</div>
+    <script>
+        document.getElementById('ua-display').innerText = '内核标识: ' + navigator.userAgent;
+    </script>
 </body>
 
 </html>
