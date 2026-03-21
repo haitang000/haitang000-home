@@ -2,6 +2,19 @@
 <html>
 
 <head>
+  <script>
+    (function() {
+      try {
+        var ua = window.navigator.userAgent;
+        var isOutdated = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1 || ua.indexOf('PaleMoon') > -1;
+        if (isOutdated) throw 1;
+        new Function('let a=1;const b=2;const c=()=>{};class D{}');
+        if (!window.customElements || !window.fetch || !window.Promise) throw 1;
+      } catch (e) {
+        window.location.href = '/browser-outdated.html';
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css" />
