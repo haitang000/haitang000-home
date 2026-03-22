@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <script>
+    (function() {
+      try {
+        var ua = window.navigator.userAgent;
+        var isOutdated = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1 || ua.indexOf('PaleMoon') > -1;
+        if (isOutdated) throw 1;
+        new Function('let a=1;const b=2;const c=()=>{};class D{}');
+        if (!window.customElements || !window.fetch || !window.Promise) throw 1;
+      } catch (e) {
+        window.location.href = '/browser-outdated.html';
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/article.css" />
+  <title>haitang000 - 文章</title>
+  <link rel="icon" href="/assets/avatar/avatar.jpg" />
+  <script src="https://kit.fontawesome.com/aa17b4b6b9.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <img src="/assets/avatar/avatar.jpg" alt="logo" />
+      <a href="/index.html#home"><i class="fas fa-home"></i><span>首页</span></a>
+      <a href="/index.html#blog"><i class="fas fa-book"></i><span>文章</span></a>
+      <a href="/index.html#about"><i class="fas fa-user"></i><span>关于我</span></a>
+      <a href="mailto:hello@haitang000.cn"><i class="fas fa-envelope"></i><span>联系我</span></a>
+    </div>
+  </nav>
+
+  <main class="article-container">
+    <article class="article">
+      <header class="article-header">
+        <h1 id="article-title" class="article-title">加载中...</h1>
+        <div id="article-meta" class="article-meta">
+          <span class="loading-text">正在加载文章信息...</span>
+        </div>
+      </header>
+
+      <div id="article-content" class="article-content">
+        <div class="article-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span>加载文章内容...</span>
+        </div>
+      </div>
+
+      <footer class="article-footer">
+        <div class="article-actions">
+          <a href="/index.html#blog" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>返回文章列表</span>
+          </a>
+          <button class="share-btn" onclick="shareArticle()" title="分享文章">
+            <i class="fas fa-share-alt"></i>
+          </button>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <script src="/script/markdown-parser.js"></script>
+  <script src="/script/article-loader.js"></script>
+  <script src="/script/cursor.js"></script>
+  <script>
+    // 分享功能
+    async function shareArticle() {
+      const shareData = {
+        title: document.title,
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.log('Share cancelled');
+        }
+      } else {
+        // 复制链接到剪贴板
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          const btn = document.querySelector('.share-btn');
+          const original = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            btn.innerHTML = original;
+          }, 2000);
+        } catch (err) {
+          console.error('Copy failed:', err);
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

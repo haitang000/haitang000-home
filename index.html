@@ -92,7 +92,7 @@
       
       <div class="editorial-article-list">
         <!-- Article 1 -->
-        <a href="/article/article1.html" class="editorial-article-row">
+        <a href="/article/index.html?id=article1" class="editorial-article-row">
           <div class="article-meta">
             <span class="article-date">Mar 2026</span>
             <span class="article-category">Blog</span>
@@ -226,5 +226,54 @@
 
     // Safety timeout (3 seconds)
     setTimeout(finishLoading, 3000);
+  })();
+
+  // Marquee Speed Up Logic
+  (function() {
+    const track = document.querySelector('.marquee-track');
+    const brandContainer = document.querySelector('.footer-brand-huge');
+    if (!track || !brandContainer) return;
+
+    // Enable interaction
+    brandContainer.style.pointerEvents = 'auto';
+    brandContainer.style.cursor = 'grab';
+
+    let isPressing = false;
+    let currentRate = 1;
+    let targetRate = 1;
+
+    const onDown = (e) => {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      isPressing = true;
+      brandContainer.style.cursor = 'grabbing';
+    };
+
+    const onUp = () => {
+      isPressing = false;
+      brandContainer.style.cursor = 'grab';
+    };
+
+    brandContainer.addEventListener('mousedown', onDown);
+    brandContainer.addEventListener('touchstart', onDown, { passive: true });
+    
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+    
+    // Prevent default drag
+    brandContainer.addEventListener('dragstart', (e) => e.preventDefault());
+
+    function loop() {
+      targetRate = isPressing ? 15 : 1;
+      currentRate += (targetRate - currentRate) * 0.04; // Smooth acceleration factor
+
+      const animations = track.getAnimations();
+      if (animations && animations.length > 0) {
+        animations.forEach(anim => {
+          anim.playbackRate = currentRate;
+        });
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
   })();
 </script>
