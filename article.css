@@ -300,12 +300,13 @@ nav {
   border-radius: var(--radius-sm);
   overflow: hidden;
   background-color: #1d1d1f;
+  padding-top: 2.5rem;
 }
 
 .code-lang {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   padding: 8px 16px;
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
@@ -313,12 +314,12 @@ nav {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom-left-radius: var(--radius-sm);
+  border-bottom-right-radius: var(--radius-sm);
 }
 
 .code-block {
   margin: 0;
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   overflow-x: auto;
   font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
   font-size: 0.9rem;
@@ -682,11 +683,11 @@ nav {
   }
 
   .article-actions {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .back-btn {
-    width: 100%;
+    flex: 1;
     justify-content: center;
   }
 }

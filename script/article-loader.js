@@ -16,7 +16,15 @@ class ArticleLoader {
    */
   getArticleId() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('id') || 'article1';
+    const idParam = params.get('id');
+    if (idParam) return idParam;
+
+    const match = window.location.pathname.match(/\/article\/([^\/]+)/);
+    if (match && match[1] && match[1] !== 'index.html') {
+      return match[1];
+    }
+    
+    return 'article1';
   }
 
   /**
@@ -24,7 +32,7 @@ class ArticleLoader {
    */
   async loadMetadata(articleId) {
     try {
-      const response = await fetch(`/article/${articleId}.json`);
+      const response = await fetch(`/article/${articleId}/${articleId}.json`);
       if (!response.ok) throw new Error('Metadata not found');
       return await response.json();
     } catch (error) {
@@ -44,7 +52,7 @@ class ArticleLoader {
    */
   async loadContent(articleId) {
     try {
-      const response = await fetch(`/article/${articleId}.md`);
+      const response = await fetch(`/article/${articleId}/${articleId}.md`);
       if (!response.ok) {
         throw new Error(`Failed to load article: ${response.status}`);
       }

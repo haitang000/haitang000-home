@@ -11,9 +11,10 @@
 ├── article.css             # 文章页面样式
 ├── index.css               # 首页样式
 ├── article/                # 文章相关内容
-│   ├── index.html          # 文章模板（通用）
-│   ├── article1.md         # 文章 Markdown 内容
-│   └── article1.json       # 文章元数据
+│   └── article1/           # 文章目录（以文章 ID 命名）
+│       ├── index.html      # 文章页面模板
+│       ├── article1.md     # 文章 Markdown 内容
+│       └── article1.json   # 文章元数据
 ├── script/                 # JavaScript 脚本
 │   ├── markdown-parser.js  # Markdown 解析器
 │   ├── article-loader.js   # 文章加载器
@@ -27,9 +28,9 @@
 
 ## 添加新文章流程
 
-### 1. 创建 Markdown 文件
+### 1. 创建文章目录和 Markdown 文件
 
-在 `article/` 目录下创建新的 `.md` 文件，命名格式：`article{n}.md`（如 article2.md）
+在 `article/` 目录下创建新的文件夹，命名格式需要与文章 ID 一致（如 article2），然后在该文件夹内创建同名的 `.md` 文件（如 article2/article2.md）以及复制 `index.html` 模板：
 
 ```markdown
 # 文章标题
@@ -51,7 +52,7 @@ console.log('Hello');
 
 ### 2. 创建元数据文件
 
-创建同名的 `.json` 文件（如 article2.json）：
+创建同名的 `.json` 文件（如 article2/article2.json）：
 
 ```json
 {
@@ -69,7 +70,7 @@ console.log('Hello');
 在 `index.html` 的 `#blog` 区域添加文章卡片：
 
 ```html
-<a href="/article/index.html?id=article2" class="editorial-article-row">
+<a href="/article/article2/index.html" class="editorial-article-row">
   <div class="article-meta">
     <span class="article-date">Mar 2026</span>
     <span class="article-category">分类</span>
@@ -150,14 +151,14 @@ function hello() {
 ## 技术要点
 
 1. **文章渲染**：使用 `article-loader.js` 动态加载 Markdown 文件并解析为 HTML
-2. **URL 参数**：文章通过 `?id=article1` 参数指定，对应加载 `article1.md`
+2. **URL 路径**：文章通过 `/article/article1/index.html` 之类的目录路径自动判断文章 ID 进行加载
 3. **响应式设计**：适配桌面和移动端
 4. **深色模式**：使用 `prefers-color-scheme` 媒体查询自动切换
 5. **代码高亮**：代码块支持复制功能，图片支持点击放大
 
 ## 注意事项
 
-- 不要直接编辑 `article/index.html` 来修改文章内容
-- 所有文章内容都应该放在 `.md` 文件中
+- 不要随便修改 `article/xxx/index.html` 模板核心逻辑，但它可以被复制到每个新文章目录中
+- 所有文章内容都应该放在该文章专属目录的 `.md` 文件中
 - 确保每个 `.md` 文件都有对应的 `.json` 元数据文件
-- 首页文章链接必须使用 `/article/index.html?id=xxx` 格式
+- 首页文章链接必须使用 `/article/xxx/index.html` 格式
