@@ -153,8 +153,7 @@ function hello() {
 1. **文章渲染**：使用 `article-loader.js` 动态加载 Markdown 文件并解析为 HTML
 2. **URL 路径**：文章通过 `/article/article1/index.html` 之类的目录路径自动判断文章 ID 进行加载
 3. **响应式设计**：适配桌面和移动端
-4. **深色模式**：使用 `prefers-color-scheme` 媒体查询自动切换
-5. **代码高亮**：代码块支持复制功能，图片支持点击放大
+4. **代码高亮**：代码块支持复制功能，图片支持点击放大
 
 ## 注意事项
 

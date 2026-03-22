@@ -23,7 +23,7 @@ class ArticleLoader {
     if (match && match[1] && match[1] !== 'index.html') {
       return match[1];
     }
-    
+
     return 'article1';
   }
 
@@ -38,8 +38,8 @@ class ArticleLoader {
     } catch (error) {
       console.warn('No metadata found, using defaults');
       return {
-        title: '未命名文章',
-        author: 'haitang000',
+        title: 'Unknown',
+        author: 'Unknown',
         date: new Date().toLocaleDateString('zh-CN'),
         category: 'Blog',
         description: ''
@@ -72,7 +72,7 @@ class ArticleLoader {
 抱歉，无法加载请求的文章。可能的原因：
 
 - 文章不存在或已被删除
-- 网络连接问题
+- 网络连接问题，前往 [服务运行状态](https://status.haitang000.cn/uptime) 试试
 - 文件路径错误
 
 请 [返回首页](/index.html) 查看其他内容。`;
