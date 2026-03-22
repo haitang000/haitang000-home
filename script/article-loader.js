@@ -72,7 +72,7 @@ class ArticleLoader {
 抱歉，无法加载请求的文章。可能的原因：
 
 - 文章不存在或已被删除
-- 网络连接问题，前往 [服务运行状态](https://status.haitang000.cn/uptime) 试试
+- 网络连接问题，前往 [服务运行状态](https://status.haitang000.cn/status/uptime) 试试
 - 文件路径错误
 
 请 [返回首页](/index.html) 查看其他内容。`;

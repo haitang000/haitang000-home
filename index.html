@@ -3,7 +3,7 @@
 
 <head>
   <script>
-    (function() {
+    (function () {
       try {
         var ua = window.navigator.userAgent;
         var isOutdated = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1 || ua.indexOf('PaleMoon') > -1;
@@ -89,10 +89,10 @@
           这里记录了一些关于设计、代码以及生活的思考。<br>虽然现在内容还不多，但希望能慢慢填满。
         </p>
       </div>
-      
+
       <div class="editorial-article-list">
         <!-- Article 1 -->
-        <a href="/article/article1/index.html" class="editorial-article-row">
+        <a href="/article/1" class="editorial-article-row">
           <div class="article-meta">
             <span class="article-date">Mar 2026</span>
             <span class="article-category">Blog</span>
@@ -105,7 +105,7 @@
             <i class="fas fa-arrow-right"></i>
           </div>
         </a>
-        
+
         <!-- Placeholder 1 -->
         <div class="editorial-article-row disabled">
           <div class="article-meta">
@@ -145,7 +145,8 @@
 
       <div class="footer-bottom-bar">
         <span>&copy; 2025 haitang000. All Rights Reserved.</span>
-        <span>Crafted with <i class="fas fa-heart" style="color: #ff2d55; animation: heartbeat 1.5s infinite;"></i> in Shanghai</span>
+        <span>Crafted with <i class="fas fa-heart" style="color: #ff2d55; animation: heartbeat 1.5s infinite;"></i> in
+          Shanghai</span>
       </div>
     </div>
 
@@ -166,13 +167,13 @@
 <script src="script/skills-physics.js"></script>
 <script>
   // Back-to-top button visibility
-  (function() {
+  (function () {
     const btn = document.querySelector('.back-to-top');
     if (!btn) return;
     let ticking = false;
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       if (!ticking) {
-        window.requestAnimationFrame(function() {
+        window.requestAnimationFrame(function () {
           if (window.scrollY > 400) {
             btn.classList.add('visible');
           } else {
@@ -186,7 +187,7 @@
   })();
 
   // Loading Screen Logic
-  (function() {
+  (function () {
     const splash = document.getElementById('splash-screen');
     const bar = document.querySelector('.loading-bar');
     if (!splash || !bar) return;
@@ -213,7 +214,7 @@
         // Unlock scroll after fade out
         document.body.classList.remove('no-scroll');
         document.body.classList.add('is-loaded');
-        
+
         // Signal that entrance animations can start
         window.dispatchEvent(new CustomEvent('loading-finished'));
 
@@ -229,7 +230,7 @@
   })();
 
   // Marquee Speed Up Logic
-  (function() {
+  (function () {
     const track = document.querySelector('.marquee-track');
     const brandContainer = document.querySelector('.footer-brand-huge');
     if (!track || !brandContainer) return;
@@ -255,10 +256,10 @@
 
     brandContainer.addEventListener('mousedown', onDown);
     brandContainer.addEventListener('touchstart', onDown, { passive: true });
-    
+
     window.addEventListener('mouseup', onUp);
     window.addEventListener('touchend', onUp);
-    
+
     // Prevent default drag
     brandContainer.addEventListener('dragstart', (e) => e.preventDefault());
 
