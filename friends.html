@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <script>
+    (function () {
+      try {
+        var ua = window.navigator.userAgent;
+        var isOutdated = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1 || ua.indexOf('PaleMoon') > -1;
+        if (isOutdated) throw 1;
+        new Function('let a=1;const b=2;const c=()=>{};class D{}');
+        if (!window.customElements || !window.fetch || !window.Promise) throw 1;
+      } catch (e) {
+        window.location.href = '/browser-outdated.html';
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css" />
+  <title>友情链接 - haitang000</title>
+  <link rel="icon" href="/assets/avatar/avatar.jpg" />
+  <script src="https://kit.fontawesome.com/aa17b4b6b9.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  
+  <style>
+    .friends-section {
+      padding: 8rem 2rem 4rem;
+      min-height: 80vh;
+      background-color: #f4f4f5;
+    }
+    .friends-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: smoothFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s;
+    }
+    .friends-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+      color: #1d1d1f;
+    }
+    .friends-subtitle {
+      color: #86868b;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .friends-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .friend-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      animation: smoothFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    /* 卡片入场错开延迟效果 */
+    .friend-card:nth-child(1) { animation-delay: 0.3s; }
+    .friend-card:nth-child(2) { animation-delay: 0.4s; }
+    .friend-card:nth-child(3) { animation-delay: 0.5s; }
+    .friend-card:nth-child(4) { animation-delay: 0.6s; }
+
+    .friend-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .friend-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #f4f4f5;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .friend-card:hover .friend-avatar {
+      transform: scale(1.1) rotate(5deg);
+    }
+    .friend-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-grow: 1;
+    }
+    .friend-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0;
+      color: #1d1d1f;
+    }
+    .friend-desc {
+      color: #86868b;
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    @keyframes smoothFadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 极简加载页面 -->
+  <div id="splash-screen">
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+  </div>
+  
+  <nav>
+    <div class="navbar">
+      <img src="/assets/avatar/avatar.jpg" alt="logo" />
+      <a href="/index.html#home"><i class="fas fa-home"></i><span class="nav-text">首页</span></a>
+      <a href="/index.html#about"><i class="fas fa-user"></i><span class="nav-text">关于我</span></a>
+      <a href="/index.html#blog"><i class="fas fa-book"></i><span class="nav-text">文章</span></a>
+      <a href="/friends.html"><i class="fas fa-link"></i><span class="nav-text">友链</span></a>
+      <a href="mailto:hello@haitang000.cn"><i class="fas fa-envelope"></i><span class="nav-text">联系我</span></a>
+    </div>
+  </nav>
+
+  <main class="friends-section">
+    <div class="friends-header">
+      <h1 class="friends-title">友情链接</h1>
+      <p class="friends-subtitle">一些有趣的人和有趣的灵魂。<br>欢迎互相交换友链，共同探索无限可能。</p>
+    </div>
+    
+    <div class="friends-grid">
+      <!-- 友链卡片样例 1 -->
+      <a href="https://www.xiayan.icu/" target="_blank" class="friend-card">
+        <img src="https://www.xiayan.icu/image/icon/logo.jpg" alt="Friend Avatar" class="friend-avatar">
+        <div class="friend-info">
+          <h3 class="friend-name">夏彦 I See You</h3>
+          <p class="friend-desc">一款 界面简洁优雅、支持高度自定义且开箱即用 的照片墙模板</p>
+        </div>
+      </a>
+      
+      <a href="https://study.with.xiayan.icu/" target="_blank" class="friend-card">
+        <img src="https://study.with.xiayan.icu/assets/img/avatar.png" alt="Friend Avatar" class="friend-avatar">
+        <div class="friend-info">
+          <h3 class="friend-name">Study With 夏彦</h3>
+          <p class="friend-desc">一款基于人工智能的陪伴式学习辅助工具</p>
+        </div>
+      </a>
+
+      <!-- 友链卡片样例 2 -->
+      <a href="#" target="_blank" class="friend-card">
+        <img src="/assets/icon/unknown.png" alt="Friend Avatar" class="friend-avatar">
+        <div class="friend-info">
+          <h3 class="friend-name">虚位以待</h3>
+          <p class="friend-desc">会是谁呢？</p>
+        </div>
+      </a>
+      
+      <!-- 你可以继续向下添加更多的 .friend-card -->
+    </div>
+  </main>
+
+  <footer class="final-footer">
+    <div class="footer-container">
+      <div class="footer-brand-huge">
+        <div class="marquee-track">
+          <div class="marquee-part">
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+          </div>
+          <div class="marquee-part">
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+            <span>haitang000</span>
+            <span class="marquee-dot">·</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 haitang000. All Rights Reserved.</span>
+        <span>Crafted with <i class="fas fa-heart" style="color: #ff2d55; animation: heartbeat 1.5s infinite;"></i> in Shanghai</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Loading Screen Logic 确保和主页一样的平滑过渡
+    (function () {
+      const splash = document.getElementById('splash-screen');
+      const bar = document.querySelector('.loading-bar');
+      if (!splash || !bar) return;
+
+      document.body.classList.add('no-scroll');
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 90) progress = 90;
+        bar.style.width = progress + '%';
+      }, 100);
+
+      let loaded = false;
+      const finishLoading = () => {
+        if (loaded) return;
+        loaded = true;
+        clearInterval(interval);
+        bar.style.width = '100%';
+        setTimeout(() => {
+          splash.classList.add('hidden');
+          document.body.classList.remove('no-scroll');
+          document.body.classList.add('is-loaded');
+          window.dispatchEvent(new CustomEvent('loading-finished'));
+          setTimeout(() => splash.remove(), 800);
+        }, 300);
+      };
+
+      window.addEventListener('load', finishLoading);
+      setTimeout(finishLoading, 3000);
+    })();
+  </script>
+</body>
+</html>
