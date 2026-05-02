@@ -236,19 +236,34 @@ img {
     top: 16px;
     z-index: 10086;
     max-width: 95%;
-    /* Prevent overflowing on mobile */
+    transition: all 0.3s cubic-bezier(0.68, -0.21, 0.265, 1.21);
 }
 
-@media (max-width: 480px) {
-    .navbar {
-        padding: 4px 8px;
-        top: 10px;
-    }
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .navbar a {
-        padding: 6px 10px !important;
-        font-size: 0.85rem;
-    }
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #1d1d1f;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 8px;
+    outline: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-category {
+    display: none;
 }
 
 .navbar img {
@@ -305,6 +320,117 @@ img {
     background-color: rgba(0, 0, 0, 0.1);
     color: #1d1d1f;
     scale: 0.95;
+}
+
+/* Media Queries should come after base styles */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 0;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    background-color 0.4s ease, 
+                    backdrop-filter 0.4s ease;
+    }
+
+    .navbar.menu-open {
+        background-color: #ffffff;
+        height: 100vh;
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow-y: auto;
+        backdrop-filter: blur(20px);
+    }
+
+    .nav-header {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        align-items: flex-start !important;
+        margin-top: 0;
+        transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    opacity 0.4s ease,
+                    margin-top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .navbar.menu-open .nav-links {
+        max-height: 100vh;
+        opacity: 1;
+        margin-top: 20px;
+    }
+
+    .nav-category {
+        display: block;
+        font-size: 0.8rem;
+        color: #86868b;
+        margin-bottom: 24px;
+        font-weight: 500;
+        text-transform: capitalize;
+        text-align: left !important;
+        width: 100%;
+    }
+
+    .navbar a {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        padding: 12px 0 !important;
+        font-size: 2rem !important;
+        font-weight: 600 !important;
+        color: #1d1d1f !important;
+        opacity: 0;
+        transform: translateY(8px);
+        background: none !important;
+        border-radius: 0;
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .navbar a i {
+        display: none;
+        /* Hide icons on mobile menu to match image */
+    }
+
+    .navbar.menu-open a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .navbar.menu-open a:nth-child(2) { transition-delay: 0.2s; }
+    .navbar.menu-open a:nth-child(3) { transition-delay: 0.26s; }
+    .navbar.menu-open a:nth-child(4) { transition-delay: 0.32s; }
+    .navbar.menu-open a:nth-child(5) { transition-delay: 0.38s; }
+    .navbar.menu-open a:nth-child(6) { transition-delay: 0.44s; }
+}
+
+
+
+@media (max-width: 480px) {
+    .navbar {
+        top: 0;
+    }
 }
 
 
@@ -1369,10 +1495,6 @@ img {
         font-size: 1rem;
     }
 
-    .navbar {
-        display: none;
-    }
-
     .content {
         padding: 16px;
     }
@@ -1553,3 +1675,29 @@ img {
     color: #86868b;
     border-color: transparent;
 }
+
+/* ========== Page Transitions (Minimalist) ========== */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f4f4f5; /* Matches site background */
+    z-index: 9999999;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.4s;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
