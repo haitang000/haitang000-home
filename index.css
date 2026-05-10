@@ -335,9 +335,9 @@ img {
         left: 0;
         box-sizing: border-box;
         background-color: rgba(255, 255, 255, 0.8);
-        transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                    background-color 0.4s ease, 
-                    backdrop-filter 0.4s ease;
+        transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            background-color 0.4s ease,
+            backdrop-filter 0.4s ease;
     }
 
     .navbar.menu-open {
@@ -370,9 +370,9 @@ img {
         box-sizing: border-box;
         align-items: flex-start !important;
         margin-top: 0;
-        transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                    opacity 0.4s ease,
-                    margin-top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 0.4s ease,
+            margin-top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .navbar.menu-open .nav-links {
@@ -396,7 +396,7 @@ img {
         width: 100% !important;
         justify-content: flex-start !important;
         text-align: left !important;
-        padding: 12px 0 !important;
+        padding: 8px 0 !important;
         font-size: 2rem !important;
         font-weight: 600 !important;
         color: #1d1d1f !important;
@@ -404,8 +404,8 @@ img {
         transform: translateY(8px);
         background: none !important;
         border-radius: 0;
-        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .navbar a i {
@@ -418,11 +418,25 @@ img {
         transform: translateY(0);
     }
 
-    .navbar.menu-open a:nth-child(2) { transition-delay: 0.2s; }
-    .navbar.menu-open a:nth-child(3) { transition-delay: 0.26s; }
-    .navbar.menu-open a:nth-child(4) { transition-delay: 0.32s; }
-    .navbar.menu-open a:nth-child(5) { transition-delay: 0.38s; }
-    .navbar.menu-open a:nth-child(6) { transition-delay: 0.44s; }
+    .navbar.menu-open a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .navbar.menu-open a:nth-child(3) {
+        transition-delay: 0.26s;
+    }
+
+    .navbar.menu-open a:nth-child(4) {
+        transition-delay: 0.32s;
+    }
+
+    .navbar.menu-open a:nth-child(5) {
+        transition-delay: 0.38s;
+    }
+
+    .navbar.menu-open a:nth-child(6) {
+        transition-delay: 0.44s;
+    }
 }
 
 
@@ -1683,7 +1697,8 @@ img {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #f4f4f5; /* Matches site background */
+    background-color: #f4f4f5;
+    /* Matches site background */
     z-index: 9999999;
     pointer-events: none;
     opacity: 0;
@@ -1708,49 +1723,62 @@ html.custom-cursor * {
 
 #cursor-dot {
     position: fixed;
-    top: 0; left: 0;
-    width: 6px; height: 6px;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
     background: #fff;
     border-radius: 50%;
     mix-blend-mode: difference;
-    pointer-events: none; z-index: 99999;
+    pointer-events: none;
+    z-index: 99999;
     transform: translate(-50%, -50%);
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: opacity 0.15s ease, width 0.2s ease, height 0.2s ease;
 }
+
 #cursor-dot.hover {
-    width: 64px; height: 64px;
+    width: 64px;
+    height: 64px;
 }
+
 #cursor-dot .cursor-arrow {
     display: none;
     font-size: 20px;
 }
+
 #cursor-dot.hover .cursor-arrow {
     display: var(--fa-display, inline-block);
 }
 
 #cursor-ring {
     position: fixed;
-    top: 0; left: 0;
-    width: 28px; height: 28px;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
     border: 1.5px solid #fff;
     border-radius: 50%;
     mix-blend-mode: difference;
     opacity: 0.45;
-    pointer-events: none; z-index: 99998;
+    pointer-events: none;
+    z-index: 99998;
     transform: translate(-50%, -50%);
     transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
 }
+
 #cursor-ring.hover {
     opacity: 0;
 }
+
 #cursor-ring.clicking {
-    width: 20px; height: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 #cursor-dot.hidden,
 #cursor-ring.hidden {
     opacity: 0;
 }
-
-

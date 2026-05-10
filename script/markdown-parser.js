@@ -59,34 +59,26 @@ class MarkdownParser {
     // 解析段落
     html = this._parseParagraphs(html);
 
+    // 解析代码块（放到最后，避免内部被段落解析器破坏）
+    html = this._parseCodeBlocks(html);
+
     // 清理多余空行
     html = html.replace(/\n{3,}/g, '\n\n');
 
     return html.trim();
   }
 
-  /**
-   * 转义代码块外的 HTML 特殊字符
-   */
   _escapeHtmlInCodeBlocks(text) {
     const codeBlocks = [];
 
     // 提取代码块
     text = text.replace(/```([\w]*)\n([\s\S]*?)```/g, (match, lang, code) => {
       codeBlocks.push({ lang, code: this._escapeHtml(code.trimEnd()) });
-      return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
+      return `@@@CODE_BLOCK_${codeBlocks.length - 1}@@@`;
     });
 
     // 转义其他部分的 HTML
     text = this._escapeHtml(text);
-
-    // 恢复代码块
-    codeBlocks.forEach((block, i) => {
-      text = text.replace(
-        `___CODE_BLOCK_${i}___`,
-        `___CODE_BLOCK_${i}___`
-      );
-    });
 
     // 存储代码块供后续处理
     this._codeBlocks = codeBlocks;
@@ -100,17 +92,21 @@ class MarkdownParser {
     return div.innerHTML;
   }
 
-  /**
-   * 解析代码块
-   */
   _parseCodeBlocks(text) {
     if (!this._codeBlocks) return text;
 
     this._codeBlocks.forEach((block, i) => {
       const highlighted = this._highlightCode(block.code, block.lang);
-      const langLabel = block.lang ? `<span class="code-lang">${block.lang}</span>` : '';
-      const replacement = `<div class="code-block-wrapper">${langLabel}<pre class="code-block"><code>${highlighted}</code></pre></div>`;
-      text = text.replace(`___CODE_BLOCK_${i}___`, replacement);
+      const fileName = block.lang ? `${block.lang}` : 'text';
+      const replacement = `
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <span class="code-file-name">${fileName}</span>
+    <div class="code-block-actions" data-cursor-ignore></div>
+  </div>
+  <pre class="code-block"><code>${highlighted}</code></pre>
+</div>`.trim();
+      text = text.replace(`@@@CODE_BLOCK_${i}@@@`, replacement);
     });
 
     return text;
@@ -421,7 +417,8 @@ class MarkdownParser {
       // 检查是否是块级元素
       const isBlockElement = /^<(h[1-6]|ul|ol|li|blockquote|pre|hr|div|img)/.test(trimmed) ||
                              trimmed === '' ||
-                             /^<[\w]+/.test(trimmed);
+                             /^<[\w]+/.test(trimmed) ||
+                             /^@@@CODE_BLOCK_\d+@@@/.test(trimmed);
 
       if (isBlockElement) {
         if (inParagraph && paragraphBuffer.length > 0) {
