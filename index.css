@@ -1700,4 +1700,57 @@ img {
     -webkit-backdrop-filter: blur(10px);
 }
 
-
+/* ========== Custom Cursor ========== */
+html.custom-cursor,
+html.custom-cursor * {
+    cursor: none !important;
+}
+
+#cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 6px; height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none; z-index: 99999;
+    transform: translate(-50%, -50%);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
+#cursor-dot.hover {
+    width: 64px; height: 64px;
+}
+#cursor-dot .cursor-arrow {
+    display: none;
+    font-size: 20px;
+}
+#cursor-dot.hover .cursor-arrow {
+    display: var(--fa-display, inline-block);
+}
+
+#cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    width: 28px; height: 28px;
+    border: 1.5px solid #fff;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    opacity: 0.45;
+    pointer-events: none; z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
+}
+#cursor-ring.hover {
+    opacity: 0;
+}
+#cursor-ring.clicking {
+    width: 20px; height: 20px;
+}
+
+#cursor-dot.hidden,
+#cursor-ring.hidden {
+    opacity: 0;
+}
+
+
