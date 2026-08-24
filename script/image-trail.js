@@ -4,8 +4,26 @@
 
     const isMobile = window.innerWidth < 768;
 
-    // Array of random square images to use for the trail
-    const images = Array.from({ length: 12 }, (_, i) => `https://www.xiayan.icu/image/${i + 1}.jpg`);
+    // Curated landscape photos. A random photo is assigned to each trail item
+    // when the page loads, so the trail has a different mix on every visit.
+    const landscapeImages = [
+        'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&h=800&q=85',
+        'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=800&h=800&q=85'
+    ];
+
+    const getRandomLandscapeImage = () => {
+        return landscapeImages[Math.floor(Math.random() * landscapeImages.length)];
+    };
 
     let globalIndex = 0;
     let last = { x: 0, y: 0 };
@@ -49,7 +67,7 @@
     const poolSize = isMobile ? 20 : 40;
     const imageElements = Array.from({ length: poolSize }, (_, i) => {
         const img = document.createElement('img');
-        img.src = images[i % images.length];
+        img.src = getRandomLandscapeImage();
         img.classList.add('trail-image');
         // Make images smaller on mobile
         if (isMobile) {
