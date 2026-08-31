@@ -32,7 +32,7 @@ class ArticleLoader {
    */
   async loadMetadata(articleId) {
     try {
-      const response = await fetch(`/article/${articleId}/${articleId}.json`);
+      const response = await fetch(`./${articleId}/${articleId}.json`);
       if (!response.ok) throw new Error('Metadata not found');
       return await response.json();
     } catch (error) {
@@ -52,7 +52,7 @@ class ArticleLoader {
    */
   async loadContent(articleId) {
     try {
-      const response = await fetch(`/article/${articleId}/${articleId}.md`);
+      const response = await fetch(`./${articleId}/${articleId}.md`);
       if (!response.ok) {
         throw new Error(`Failed to load article: ${response.status}`);
       }
@@ -75,7 +75,7 @@ class ArticleLoader {
 - 网络连接问题，前往 [服务运行状态](https://status.haitang000.cn/status/uptime) 试试
 - 文件路径错误
 
-请 [返回首页](/index.html) 查看其他内容。`;
+请 [返回首页](../../index.html) 查看其他内容。`;
   }
 
   /**
@@ -275,7 +275,7 @@ class ArticleLoader {
           <div class="article-error">
             <i class="fas fa-exclamation-circle"></i>
             <p>加载文章时出错，请稍后重试</p>
-            <a href="/index.html" class="back-link">返回首页</a>
+            <a href="../../index.html" class="back-link">返回首页</a>
           </div>
         `;
       }

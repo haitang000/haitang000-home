@@ -18,7 +18,7 @@
         const SKILL_DATA = [
             { label: 'Figma', color: '#3ddc84', textColor: '#0a2e14', shape: 'roundedRect', w: 110, h: 110 },
             { label: 'HTML', color: '#1a1a1a', textColor: '#ffffff', shape: 'roundedRect', w: 110, h: 110 },
-            { label: 'Minecraft', color: '#1a1a1a', textColor: '#ffffff', shape: 'roundedRect', w: 210, h: 210, bgImage: '/assets/minecraft.png' },
+            { label: 'Minecraft', color: '#1a1a1a', textColor: '#ffffff', shape: 'roundedRect', w: 210, h: 210, bgImage: 'assets/minecraft.png' },
             { label: 'CSS', color: '#e0e0e0', textColor: '#888888', shape: 'polygon', sides: 5, radius: 58 },
             { label: 'JS', color: '#e8e8e8', textColor: '#4a4a4a', shape: 'roundedRect', w: 110, h: 110 },
             { label: 'GSAP', color: '#3ddc84', textColor: '#0a2e14', shape: 'polygon', sides: 3, radius: 52 },
